@@ -1,2 +1,847 @@
-你好，我是张祝欣
-这是我的GitHub个人主页
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zhuxin Zhang — M.Eng. Candidate in Naval Architecture and Ocean Engineering at Sun Yat-sen University. Researcher in intelligent control and deep reinforcement learning for autonomous marine systems.">
+<title>Zhuxin Zhang — Personal Homepage</title>
+<style>
+/* ===== Reset & Variables ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a365d;
+  --primary-light:#2c5282;
+  --accent:#b8860b;
+  --accent-light:#d4a853;
+  --bg:#f7f9fc;
+  --card:#ffffff;
+  --text:#2d3748;
+  --text-secondary:#5a6c7d;
+  --text-muted:#8899aa;
+  --border:#e2e8f0;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 6px rgba(0,0,0,.05),0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg:0 10px 25px rgba(0,0,0,.06),0 4px 10px rgba(0,0,0,.03);
+  --radius:8px;
+  --radius-lg:12px;
+  --max-width:880px;
+  --nav-height:60px;
+  --font-mono:'SF Mono','Fira Code','Fira Mono','Roboto Mono',Consolas,monospace;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-height) + 24px)}
+body{
+  font-family:var(--font-sans);
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== Dark Theme ===== */
+[data-theme="dark"]{
+  --primary:#90b4d6;
+  --primary-light:#b0cde8;
+  --accent:#d4a853;
+  --accent-light:#e0c878;
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e2e8f0;
+  --text-secondary:#94a3b8;
+  --text-muted:#64748b;
+  --border:#334155;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 1px 2px rgba(0,0,0,.15);
+  --shadow-md:0 4px 6px rgba(0,0,0,.25),0 2px 4px rgba(0,0,0,.2);
+  --shadow-lg:0 10px 25px rgba(0,0,0,.3),0 4px 10px rgba(0,0,0,.2);
+}
+[data-theme="dark"] .nav{background:rgba(15,23,42,.88)}
+[data-theme="dark"] .hero{background:linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%)}
+[data-theme="dark"] .pub-item[data-type="journal"]{border-left-color:var(--accent)}
+[data-theme="dark"] .badge--q1{background:#3b1708;color:#fdba74}
+[data-theme="dark"] .badge--q2{background:#052e16;color:#86efac}
+[data-theme="dark"] .badge--if{background:#0c1929;color:#93c5fd}
+[data-theme="dark"] .badge--first{background:#2d1f04;color:#fde68a}
+[data-theme="dark"] .badge--oral{background:#2d0a20;color:#f9a8d4}
+[data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.active{background:rgba(144,180,214,.12)}
+[data-theme="dark"] .proj-tech span{background:var(--bg)}
+[data-theme="dark"] .edu-card .period{background:var(--bg)}
+[data-theme="dark"] .tag{background:var(--card)}
+[data-theme="dark"] .pub-filter{background:var(--card)}
+[data-theme="dark"] .back-to-top{background:var(--primary-light);color:var(--bg)}
+
+/* ===== Theme Toggle ===== */
+.theme-toggle{
+  background:none;border:1px solid var(--border);
+  cursor:pointer;font-size:1.1rem;
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;color:var(--text-secondary);
+  margin-left:8px;flex-shrink:0;
+}
+.theme-toggle:hover{background:var(--bg);color:var(--primary)}
+
+/* ===== Navigation ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--nav-height);
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+.nav.scrolled{box-shadow:var(--shadow-md)}
+.nav-inner{
+  max-width:var(--max-width);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:100%;padding:0 20px;
+}
+.nav-brand{font-weight:700;font-size:1.05rem;color:var(--primary);flex-shrink:0}
+.nav-links{display:flex;gap:6px;list-style:none;flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none;color:var(--text-secondary);
+  font-size:.88rem;font-weight:500;
+  padding:6px 14px;border-radius:6px;
+  transition:all .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(26,54,93,.06)}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--primary);margin:5px 0;transition:.3s;border-radius:1px}
+
+/* ===== Layout ===== */
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+.section{padding:64px 0}
+.section-title{
+  font-size:1.5rem;font-weight:700;color:var(--primary);
+  margin-bottom:32px;padding-bottom:12px;
+  border-bottom:2px solid var(--accent-light);
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::before{
+  content:'';display:inline-block;
+  width:4px;height:24px;background:var(--accent);border-radius:2px;
+}
+
+/* ===== Hero ===== */
+.hero{
+  padding:calc(var(--nav-height) + 60px) 0 48px;
+  background:linear-gradient(135deg, #1a365d 0%, #1e4976 40%, #1a365d 100%);
+  color:#fff;text-align:center;
+}
+.hero-inner{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+.hero-photo{
+  width:130px;height:130px;border-radius:50%;object-fit:cover;
+  border:4px solid rgba(255,255,255,.3);
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+  margin-bottom:24px;
+  background:rgba(255,255,255,.1);
+}
+.hero-photo-placeholder{
+  width:130px;height:130px;border-radius:50%;
+  border:4px solid rgba(255,255,255,.3);
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+  margin:0 auto 24px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.8rem;font-weight:700;
+  background:rgba(255,255,255,.12);
+  color:rgba(255,255,255,.7);
+}
+.hero h1{font-size:2.4rem;font-weight:800;letter-spacing:.02em;margin-bottom:6px}
+.hero .subtitle{font-size:1.1rem;font-weight:400;opacity:.85;margin-bottom:4px}
+.hero .affiliation{font-size:.95rem;opacity:.7;margin-bottom:20px}
+.hero-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.hero-links a{
+  display:inline-flex;align-items:center;gap:6px;
+  color:#fff;text-decoration:none;
+  padding:8px 18px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.25);
+  font-size:.9rem;transition:all .25s;
+}
+.hero-links a:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+
+/* ===== About ===== */
+.about-text{font-size:1rem;color:var(--text);text-align:justify}
+.about-text p{margin-bottom:14px}
+.about-text p:last-child{margin-bottom:0}
+
+/* ===== Education ===== */
+.edu-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.edu-card{
+  background:var(--card);border-radius:var(--radius-lg);
+  padding:28px;box-shadow:var(--shadow);
+  border-left:4px solid var(--primary-light);
+  transition:box-shadow .3s,transform .2s;
+}
+.edu-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.edu-card .edu-body{display:flex;align-items:flex-start;gap:20px}
+.edu-card .edu-logo{width:80px;height:80px;border-radius:12px;object-fit:contain;flex-shrink:0;background:var(--bg);padding:4px}
+.edu-card .school{font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.edu-card .degree{font-size:.95rem;color:var(--text-secondary);margin-bottom:6px}
+.edu-card .period{font-size:.85rem;color:var(--text-muted);display:inline-block;background:var(--bg);padding:2px 12px;border-radius:12px;margin-bottom:10px}
+.edu-card .detail{font-size:.88rem;color:var(--text-secondary);line-height:1.6}
+.edu-card .gpa{font-weight:600;color:var(--accent)}
+
+/* ===== Research Interests ===== */
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{
+  display:inline-block;padding:6px 16px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;font-size:.88rem;color:var(--text-secondary);
+  transition:all .2s;
+}
+.tag:hover{border-color:var(--primary-light);color:var(--primary);box-shadow:var(--shadow)}
+
+/* ===== Publications ===== */
+.pub-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.pub-filter{
+  padding:6px 18px;border-radius:20px;
+  border:1px solid var(--border);background:var(--card);
+  font-size:.85rem;font-weight:500;cursor:pointer;
+  color:var(--text-secondary);transition:all .2s;
+}
+.pub-filter:hover{border-color:var(--primary-light);color:var(--primary)}
+.pub-filter.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.pub-list{list-style:none;display:grid;gap:16px}
+.pub-item{
+  background:var(--card);border-radius:var(--radius-lg);
+  padding:22px 28px;box-shadow:var(--shadow);
+  transition:box-shadow .3s,transform .2s;
+  border-left:3px solid transparent;
+}
+.pub-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.pub-item[data-type="journal"]{border-left-color:var(--accent)}
+.pub-item[data-type="conference"]{border-left-color:var(--primary-light)}
+.pub-item.hidden{display:none}
+.pub-number{font-size:.8rem;color:var(--text-muted);font-weight:600;margin-bottom:4px}
+.pub-title{font-size:1.02rem;font-weight:700;color:var(--primary);margin-bottom:6px;line-height:1.5}
+.pub-link-btn{
+  display:inline-block;padding:2px 10px;border-radius:12px;
+  font-size:.75rem;font-weight:600;
+  background:var(--primary);color:#fff;
+  text-decoration:none;transition:all .2s;
+}
+.pub-link-btn:hover{background:var(--primary-light)}
+.pub-authors{font-size:.88rem;color:var(--text-secondary);margin-bottom:6px}
+.pub-authors .me{font-weight:700;color:var(--primary);text-decoration:underline;text-decoration-color:var(--accent-light);text-underline-offset:3px}
+.pub-venue{font-size:.85rem;color:var(--text-secondary);margin-bottom:8px;font-style:italic}
+.pub-badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{
+  display:inline-block;padding:2px 10px;border-radius:12px;
+  font-size:.75rem;font-weight:600;line-height:1.6;
+}
+.badge--q1{background:#fff7ed;color:#c2410c}
+.badge--q2{background:#f0fdf4;color:#166534}
+.badge--if{background:#eff6ff;color:#1e40af}
+.badge--first{background:#fefce8;color:#a16207}
+.badge--oral{background:#fdf2f8;color:#9d174d}
+
+/* ===== Projects ===== */
+.proj-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.proj-card{
+  background:var(--card);border-radius:var(--radius-lg);
+  padding:28px;box-shadow:var(--shadow);
+  transition:box-shadow .3s,transform .2s;
+  display:flex;flex-direction:column;
+}
+.proj-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.proj-name{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:8px}
+.proj-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.65;flex:1}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.proj-tech span{
+  font-size:.75rem;padding:2px 10px;border-radius:10px;
+  background:var(--bg);color:var(--text-secondary);
+  font-family:var(--font-mono);
+}
+
+/* ===== Skills ===== */
+.skills-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.skill-cat{
+  background:var(--card);border-radius:var(--radius-lg);
+  padding:24px 28px;box-shadow:var(--shadow);
+}
+.skill-cat h3{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.skill-desc{
+  font-size:.9rem;color:var(--text-secondary);line-height:1.75;
+}
+
+/* ===== Awards ===== */
+.award-list{list-style:none;display:grid;gap:12px}
+.award-item{
+  background:var(--card);border-radius:var(--radius);
+  padding:16px 22px;box-shadow:var(--shadow);
+  display:flex;align-items:flex-start;gap:14px;
+  transition:box-shadow .3s;
+}
+.award-item:hover{box-shadow:var(--shadow-md)}
+.award-icon{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.award-content .award-title{font-weight:600;color:var(--text);font-size:.95rem}
+.award-content .award-detail{font-size:.85rem;color:var(--text-secondary);margin-top:2px}
+
+/* ===== Footer ===== */
+.footer{
+  text-align:center;padding:40px 20px;
+  background:var(--primary);color:rgba(255,255,255,.65);
+  font-size:.85rem;
+}
+.footer strong{color:rgba(255,255,255,.9)}
+.footer a{color:var(--accent-light);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* ===== Back to Top ===== */
+.back-to-top{
+  position:fixed;bottom:30px;right:30px;z-index:99;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--primary);color:#fff;border:none;
+  cursor:pointer;font-size:1.2rem;
+  box-shadow:var(--shadow-md);
+  opacity:0;transform:translateY(12px);
+  pointer-events:none;transition:all .3s;
+}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:var(--primary-light)}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .hero h1{font-size:1.8rem}
+  .hero .subtitle{font-size:.95rem}
+  .section{padding:48px 0}
+  .section-title{font-size:1.3rem}
+  .edu-grid{grid-template-columns:1fr}
+  .proj-grid{gap:16px}
+  .nav-links{display:none}
+  .nav-mobile-btn{display:block}
+  .nav-links.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:var(--nav-height);left:0;right:0;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:12px 20px;box-shadow:var(--shadow-md);
+  }
+  .pub-item{padding:16px 20px}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:1.5rem}
+  .hero-photo,.hero-photo-placeholder{width:100px;height:100px}
+  .hero-photo-placeholder{font-size:2.2rem}
+  .hero-links a{font-size:.82rem;padding:6px 14px}
+  .pub-filters{gap:6px}
+  .pub-filter{padding:4px 14px;font-size:.8rem}
+}
+
+/* ===== Print ===== */
+@media print{
+  .nav,.back-to-top,.pub-filters{display:none!important}
+  .hero{background:#fff!important;color:var(--text)!important;padding:20px 0}
+  .hero a{color:var(--primary)!important}
+  .section{padding:20px 0;page-break-inside:avoid}
+  .card,.pub-item,.edu-card,.proj-card,.skill-cat,.award-item{box-shadow:none!important;border:1px solid #ddd!important}
+  body{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Zhuxin Zhang</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#ongoing">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <button class="nav-mobile-btn" id="navMobileBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="hero">
+  <div class="hero-inner">
+    <!-- Replace src with your photo path; remove placeholder div when photo is set -->
+    <img class="hero-photo" src="photo.jpg" alt="Zhuxin Zhang">
+    <h1>張祝欣</h1>
+    <p class="subtitle">Zhuxin Zhang</p>
+    <div class="hero-links">
+      <a href="https://github.com/ZhuxinZhang" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:treeching@163.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- About Me -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+      <p>
+        I am Zhuxin Zhang. I received my <strong>M.Eng. in Naval Architecture and Ocean Engineering</strong> from <strong>Sun Yat-sen University</strong> (2026) and my B.Eng. in Automotive Service Engineering from <strong>Shenzhen Technology University</strong> (2023).
+      </p>
+      <p>
+        My core research focuses on <strong>intelligent control and deep reinforcement learning (DRL) for marine robotic systems</strong>. To date, I have published multiple peer-reviewed papers in top JCR Q1/Q2 journals including <em>Ocean Engineering</em>, <em>ISA Transactions</em>, and <em>Ships and Offshore Structures</em>, with three first-author journal articles and two first-author oral presentation papers accepted at the IFAC CAMS 2025 conference. I have also contributed as a co-author to several other high-level journal publications, accumulating comprehensive end-to-end experience in academic manuscript drafting, revision, and response to reviewers.
+      </p>
+      <p>
+        Beyond theoretical research, I possess extensive hands-on engineering expertise in <strong>autonomous robot full-stack development</strong>. I independently built a Gymnasium-based reinforcement learning simulation platform for USV path-following and obstacle avoidance, and led a team to develop physical prototypes including a dual-propeller underactuated USV and a ROS-based differential-drive AGV, covering the entire workflow from mechanical modeling, embedded hardware integration, and sensor calibration to control algorithm design and real-machine debugging. I further refined my engineering skills through an internship at a Shenzhen-based intelligent equipment company, where I optimized AGV control performance and compiled standardized technical documentation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section class="section" id="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-body">
+          <img class="edu-logo" src="sysu.jpg" alt="SYSU">
+          <div>
+            <div class="school">Sun Yat-sen University</div>
+            <div class="degree">M.Eng. in Naval Architecture and Ocean Engineering</div>
+            <span class="period">2023 — 2026</span>
+            <div class="detail">
+              Research on intelligent control and deep reinforcement learning for marine robotic systems.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-body">
+          <img class="edu-logo" src="sztu.png" alt="SZTU">
+          <div>
+            <div class="school">Shenzhen Technology University</div>
+            <div class="degree">B.Eng. in Automotive Service Engineering</div>
+            <span class="period">2019 — 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="section" id="experience">
+  <div class="container">
+    <h2 class="section-title">Experience</h2>
+    <div class="edu-grid">
+      <div class="edu-card" style="border-left-color:var(--primary-light)">
+        <div>
+          <div class="school">Shenzhen Intelligent Magic Cube Robot Co., Ltd.</div>
+          <div class="degree">VLA Algorithm Engineer</div>
+          <span class="period">2026.07 — Present</span>
+          <div class="detail">
+            Responsible for reproducing state-of-the-art algorithms and benchmarking them in simulation environments. Conduct post-training of foundation models using real-world robot data collected in-house, leveraging reinforcement learning for policy fine-tuning.
+          </div>
+        </div>
+      </div>
+      <div class="edu-card" style="border-left-color:var(--accent)">
+        <div>
+          <div class="school">SRED Security &amp; Surveillance Technology Co., Ltd.</div>
+          <div class="degree">ROS Development Engineer (Intern)</div>
+          <span class="period">2022.04 — 2022.07</span>
+          <div class="detail">
+            Optimized AGV control performance and compiled standardized technical documentation for autonomous ground vehicle systems.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Interests -->
+<section class="section" id="research">
+  <div class="container">
+    <h2 class="section-title">Research Interests</h2>
+    <div class="tags">
+      <span class="tag">Vision-Language-Action (VLA) Models</span>
+      <span class="tag">Robot Manipulation</span>
+      <span class="tag">Articulation &amp; Geometric Reasoning</span>
+      <span class="tag">World Models</span>
+      <span class="tag">Deep Reinforcement Learning</span>
+      <span class="tag">Unmanned Surface Vehicles (USV)</span>
+      <span class="tag">Imitation Learning</span>
+      <span class="tag">Sim-to-Real Transfer</span>
+      <span class="tag">Embodied AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- Ongoing Research -->
+<section class="section" id="ongoing">
+  <div class="container">
+    <h2 class="section-title">Ongoing Research</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div>
+          <div class="school">Articulation-Aware VLA</div>
+          <div class="detail">
+            Integrating articulation mechanisms into Vision-Language-Action models to enhance geometric understanding of joint structures and improve manipulation precision.
+          </div>
+          <span class="period" style="margin-top:8px;display:inline-block">In Progress</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="school">Articulation-Enhanced World Models</div>
+          <div class="detail">
+            Incorporating articulation geometry priors into world models for more accurate physical reasoning and long-horizon planning.
+          </div>
+          <span class="period" style="margin-top:8px;display:inline-block">In Progress</span>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div>
+          <div class="school">RL Post-Training for VLA</div>
+          <div class="detail">
+            Leveraging reinforcement learning for post-training of Vision-Language-Action models to improve policy robustness and task-level generalization on real-world manipulation tasks.
+          </div>
+          <span class="period" style="margin-top:8px;display:inline-block">In Progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Publications -->
+<section class="section" id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-filters">
+      <button class="pub-filter active" data-filter="all">All (8)</button>
+      <button class="pub-filter" data-filter="journal">Journal (6)</button>
+      <button class="pub-filter" data-filter="conference">Conference (2)</button>
+    </div>
+    <div class="pub-list">
+
+      <!-- Paper 1 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[1]</div>
+        <div class="pub-title">Improving Control Smoothness in Unmanned Surface Vehicle Path-Following: A Fourier-Enhanced Deep Reinforcement Learning Approach in the Presence of Observation Noises</div>
+        <div class="pub-authors"><span class="me">Zhang, Z.</span>, Lu, H., &amp; Miao, J.*</div>
+        <div class="pub-venue">Ocean Engineering, 2025</div>
+        <div class="pub-badges">
+          <span class="badge badge--q1">JCR Q1</span>
+          <span class="badge badge--if">IF 5.5</span>
+          <span class="badge badge--first">First Author</span>
+          <a href="https://doi.org/10.1016/j.oceaneng.2025.123501" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+      <!-- Paper 2 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[2]</div>
+        <div class="pub-title">Robust Path-Following Control of Unmanned Surface Vessels Using Deep Reinforcement Learning and Predictive Error Feedback</div>
+        <div class="pub-authors"><span class="me">Zhang, Z.</span>, Lu, H., &amp; Miao, J.*</div>
+        <div class="pub-venue">Ships and Offshore Structures, 2026</div>
+        <div class="pub-badges">
+          <span class="badge badge--q2">JCR Q2</span>
+          <span class="badge badge--if">IF 1.8</span>
+          <span class="badge badge--first">First Author</span>
+          <a href="https://doi.org/10.1080/17445302.2026.2657590" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+      <!-- Paper 3 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[3]</div>
+        <div class="pub-title">Smooth Path-Following Control of Unmanned Surface Vessels Using Lipschitz-Constrained Deep Reinforcement Learning</div>
+        <div class="pub-authors"><span class="me">Zhang, Z.</span>, Lu, H., &amp; Miao, J.*</div>
+        <div class="pub-venue">Ocean Engineering, 2026 <span style="color:var(--text-muted)">(Under Review)</span></div>
+        <div class="pub-badges">
+          <span class="badge badge--q1">JCR Q1</span>
+          <span class="badge badge--if">IF 5.5</span>
+          <span class="badge badge--first">First Author</span>
+        </div>
+      </article>
+
+      <!-- Paper 4 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[4]</div>
+        <div class="pub-title">A Novel Robust Adaptive Line-of-Sight Guidance Law for Underactuated Marine Vessels in Complex Disturbance Fields</div>
+        <div class="pub-authors">Lu, H., <span class="me">Zhang, Z.</span>, Peng, C.*, Guo, Z.*, Li, Z.</div>
+        <div class="pub-venue">Ocean Engineering, 2026</div>
+        <div class="pub-badges">
+          <span class="badge badge--q1">JCR Q1</span>
+          <span class="badge badge--if">IF 5.5</span>
+          <a href="https://doi.org/10.1016/j.oceaneng.2026.125062" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+      <!-- Paper 5 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[5]</div>
+        <div class="pub-title">PCLOS Based Fractional-Order Sliding Mode Stochastic Path Following Control for Underactuated Marine Vehicles with Multiple Disturbances and Constraints</div>
+        <div class="pub-authors">Wang, Y., Guo, Y., <span class="me">Zhang, Z.</span>, Wang, Z., Miao, J.*, Sun, X.</div>
+        <div class="pub-venue">ISA Transactions, 2024</div>
+        <div class="pub-badges">
+          <span class="badge badge--q1">JCR Q1</span>
+          <span class="badge badge--if">IF 6.5</span>
+          <a href="https://doi.org/10.1016/j.isatra.2024.09.027" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+      <!-- Paper 6 -->
+      <article class="pub-item" data-type="journal">
+        <div class="pub-number">[6]</div>
+        <div class="pub-title">Structure-Aware Variable-Gain PID Control for Nonlinear Systems: A Unified Treatment of Conservative and Nonconservative Fields</div>
+        <div class="pub-authors">Lu, H., <span class="me">Zhang, Z.</span>, Xiao, P.*, Guo, Z.*</div>
+        <div class="pub-venue">Automatica, 2026 <span style="color:var(--text-muted)">(Under Review)</span></div>
+        <div class="pub-badges">
+          <span class="badge badge--q1">JCR Q1</span>
+          <span class="badge badge--if">IF 5.9</span>
+        </div>
+      </article>
+
+      <!-- Paper 7 -->
+      <article class="pub-item" data-type="conference">
+        <div class="pub-number">[7]</div>
+        <div class="pub-title">AEOAS: SAC with Conservative Q-Learning for USV Obstacle Avoidance in Unknown Marine Environments</div>
+        <div class="pub-authors"><span class="me">Zhang, Z.</span>, Li, Z., Wang, Y., Miao, J., Xie, X.*</div>
+        <div class="pub-venue">Proceedings of the IFAC Conference on Control Applications in Marine Systems (CAMS), 2025</div>
+        <div class="pub-badges">
+          <span class="badge badge--first">First Author</span>
+          <span class="badge badge--oral">Oral Presentation</span>
+          <a href="https://doi.org/10.1016/j.ifacol.2025.11.708" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+      <!-- Paper 8 -->
+      <article class="pub-item" data-type="conference">
+        <div class="pub-number">[8]</div>
+        <div class="pub-title">Residual Reinforcement Learning Integrated PID Control for Robust Path-Following of USVs in Dynamic Environments</div>
+        <div class="pub-authors"><span class="me">Zhang, Z.</span>, Li, Z., Wang, Y., Miao, J., Xie, X.*</div>
+        <div class="pub-venue">Proceedings of the IFAC Conference on Control Applications in Marine Systems (CAMS), 2025</div>
+        <div class="pub-badges">
+          <span class="badge badge--oral">Oral Presentation</span>
+          <a href="https://doi.org/10.1016/j.ifacol.2025.11.709" target="_blank" rel="noopener" class="pub-link-btn">DOI</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section" id="projects">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-name">USV Path-Following &amp; Obstacle Avoidance Simulation Platform</div>
+        <div class="proj-desc">
+          Independently built a Gymnasium-based reinforcement learning simulation platform for USV path-following and obstacle avoidance. Integrated multiple DRL algorithms (SAC, PPO, CQL) with realistic marine disturbance models including wind, wave, and current effects.
+        </div>
+        <div class="proj-tech">
+          <span>Python</span><span>Gymnasium</span><span>PyTorch</span><span>SAC</span><span>CQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-name">Dual-Propeller Underactuated USV Prototype</div>
+        <div class="proj-desc">
+          Led a team to develop a physical dual-propeller underactuated USV. Covered the complete workflow from mechanical design and embedded hardware integration to sensor calibration, control algorithm implementation, and real-machine debugging.
+        </div>
+        <div class="proj-tech">
+          <span>C/C++</span><span>ROS</span><span>Embedded</span><span>Sensor Fusion</span><span>PID</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-name">ROS-Based Differential-Drive AGV Prototype</div>
+        <div class="proj-desc">
+          Led development of a ROS-based differential-drive Autonomous Ground Vehicle. Implemented SLAM-based localization, path planning, and real-time motion control. Optimized AGV control performance during internship at a Shenzhen intelligent equipment company.
+        </div>
+        <div class="proj-tech">
+          <span>C/C++</span><span>ROS</span><span>SLAM</span><span>Path Planning</span><span>Motion Control</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Technical Skills -->
+<section class="section" id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+
+      <div class="skill-cat">
+        <h3>Algorithms &amp; Theory</h3>
+        <p class="skill-desc">Deep reinforcement learning (PPO, SAC) for robot control, including state/action space design and reward engineering. Familiar with π-series VLA model principles, architectures, and implementation. Solid foundation in modern control theory, robot kinematics, and USV intelligent control.</p>
+      </div>
+
+      <div class="skill-cat">
+        <h3>Software &amp; Programming</h3>
+        <p class="skill-desc">Proficient in C/C++, Python, and MATLAB for algorithm development and simulation. Skilled in PyTorch, Linux, Simulink, and LaTeX for academic writing.</p>
+      </div>
+
+      <div class="skill-cat">
+        <h3>Robotics &amp; Systems Development</h3>
+        <p class="skill-desc">Experienced with ROS/ROS2. Full-stack development experience for mobile robots (USV/AGV), covering mechanical design, hardware integration, sensor calibration, embedded communication, and algorithm deployment with on-site debugging. Extensive experience in closed-loop control algorithm design, simulation validation, and real-world prototype testing for autonomous systems.</p>
+      </div>
+
+      <div class="skill-cat">
+        <h3>Academic English</h3>
+        <p class="skill-desc">Fluent in academic reading and writing, with full-cycle experience in independent writing, revision, and peer review response for 4 first-author international journal papers.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Awards -->
+<section class="section" id="awards">
+  <div class="container">
+    <h2 class="section-title">Awards &amp; Honors</h2>
+    <ul class="award-list">
+      <li class="award-item">
+        <span class="award-icon">🏆</span>
+        <div class="award-content">
+          <div class="award-title">First Prize — 17th National University Student Intelligent Car Race (Outdoor ROS Racing Group)</div>
+          <div class="award-detail">2022 · National University Student Intelligent Car Race</div>
+        </div>
+      </li>
+      <li class="award-item">
+        <span class="award-icon">🥈</span>
+        <div class="award-content">
+          <div class="award-title">Second Prize — 17th National University Student Intelligent Car Race (iFLYTEK Smart Service Robot Group)</div>
+          <div class="award-detail">2022 · National University Student Intelligent Car Race</div>
+        </div>
+      </li>
+      <li class="award-item">
+        <span class="award-icon">🏆</span>
+        <div class="award-content">
+          <div class="award-title">First Prize &amp; Third Prize — RoboCom Robot Developer Competition National Finals (Treasure Hunt Auto/Semi-Auto Time Trial)</div>
+          <div class="award-detail">2021 · RoboCom Robot Developer Competition</div>
+        </div>
+      </li>
+      <li class="award-item">
+        <span class="award-icon">🥉</span>
+        <div class="award-content">
+          <div class="award-title">Third Prize — National University Student Intelligent Car Race (Outdoor ROS Racing Group)</div>
+          <div class="award-detail">2021 · National University Student Intelligent Car Race</div>
+        </div>
+      </li>
+      <li class="award-item">
+        <span class="award-icon">🎓</span>
+        <div class="award-content">
+          <div class="award-title">First &amp; Second-Class Graduate Scholarships, Sun Yat-sen University</div>
+          <div class="award-detail">2023–2026 · Three consecutive years</div>
+        </div>
+      </li>
+      <li class="award-item">
+        <span class="award-icon">⭐</span>
+        <div class="award-content">
+          <div class="award-title">"Artisan Star" First-Class Award &amp; Undergraduate Research &amp; Innovation First-Class Award</div>
+          <div class="award-detail">2022 · Shenzhen Technology University</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="edu-grid">
+      <div class="edu-card" style="border-left-color:var(--primary-light)">
+        <p style="margin-bottom:8px;line-height:1.8">
+          🏠 From <strong>Gaoling, Xi'an, Shaanxi</strong><br>
+          🎓 B.Eng. — <strong>Shenzhen</strong> · M.Eng. — <strong>Zhuhai</strong><br>
+          💼 Working in <strong>Shenzhen</strong>
+        </p>
+        <p style="color:var(--text-secondary);font-size:.9rem">
+          📧 <a href="mailto:treeching@163.com" style="color:var(--primary-light);text-decoration:none">treeching@163.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 <strong>Zhuxin Zhang</strong> &mdash; Hosted on <a href="https://github.com/ZhuxinZhang/ZhuxinZhang.github.io">GitHub Pages</a></p>
+    <p style="margin-top:4px"><a href="mailto:treeching@163.com">treeching@163.com</a></p>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+/* ===== Theme Toggle ===== */
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+const saved = localStorage.getItem('theme');
+if (saved) html.setAttribute('data-theme', saved);
+themeToggle.textContent = html.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+themeToggle.addEventListener('click', () => {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  themeToggle.textContent = next === 'dark' ? '🌙' : '☀️';
+});
+
+/* ===== Mobile Nav Toggle ===== */
+const navMobileBtn = document.getElementById('navMobileBtn');
+const navLinks = document.getElementById('navLinks');
+navMobileBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ===== Nav Shadow on Scroll ===== */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+/* ===== Back to Top ===== */
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 500));
+backToTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ===== Active Nav Link (Intersection Observer) ===== */
+const sections = document.querySelectorAll('section[id], header[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => observer.observe(s));
+
+/* ===== Publication Filter ===== */
+const filterBtns = document.querySelectorAll('.pub-filter');
+const pubItems = document.querySelectorAll('.pub-item');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    pubItems.forEach(item => {
+      if (filter === 'all') item.classList.remove('hidden');
+      else item.classList.toggle('hidden', item.dataset.type !== filter);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
